@@ -13,8 +13,9 @@ def question(request):
     if request.method == 'GET':
         question = Question.objects.all()
         serializer = QuestionSerializer(question, many=True)
-        print(serializer.data)
+        print("views.py:16", serializer.data[0])
         return Response(serializer.data)
+        # return Response({"text":"Hi this is working"})
 
     elif request.method == 'POST':
         serializer = QuestionSerializer(data=request.data)
