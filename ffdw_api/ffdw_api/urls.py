@@ -36,6 +36,13 @@ router.register(r'users', UserViewSet)
 
 urlpatterns = [
     path('', include('users.urls')),
+    path('', include('question.urls')),
+    path('', include('game.urls')),
+    path('', include('team.urls')),
+    path('', include('round.urls')),
+    path('', include('gameTeam.urls')),
+    path('', include('gameTeamRound.urls')),
+
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),

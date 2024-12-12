@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+class GameTeamRound(models.Model):
+    gameTeam = models.CharField(max_length=225)
+    round = models.CharField(max_length=225)   
+    pts = models.IntegerField() 
+    strikes = models.IntegerField()
+    
+    class Meta:
+        ordering = ['gameTeam']
