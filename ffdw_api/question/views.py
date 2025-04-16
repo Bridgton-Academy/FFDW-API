@@ -23,3 +23,21 @@ def question(request):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+def individual_question(request):
+    """
+    List all code questions, or create a new question.
+    """
+    if request.method == 'GET':
+        question = Question.objects.all()
+        serializer = QuestionSerializer(question)
+        print("views.py:16", serializer.data)
+        return Response(serializer.data)
+        # return Response({"text":"Hi this is working"})
+
+    elif request.method == 'POST':
+        serializer = QuestionSerializer(data=request.data['pk'])
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
